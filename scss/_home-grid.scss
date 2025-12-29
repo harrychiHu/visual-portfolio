@@ -1,0 +1,74 @@
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  min-height: 100vh;
+
+  a {
+    display: grid;
+    place-items: center;
+    font-family: $font-main;
+    font-size: 36px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  // ✅ 暗化遮罩（預設透明）
+  a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    transition: background 200ms ease;
+    z-index: 0;
+  }
+
+  // ✅ 讓文字在遮罩上面（很重要，不然文字也會被蓋暗或蓋掉）
+  a {
+    z-index: 1;
+  }
+
+  // ✅ 滑進整個 grid：全部變暗
+  &:hover a::before {
+    background: rgba(0, 0, 0, 0.22);
+  }
+
+  // ✅ 滑到某格：那格恢復（遮罩變透明）
+  &:hover a:hover::before {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  // 底線效果
+  a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 45%;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transform: translateX(-50%);
+    opacity: 0.6;
+    transition: width 220ms ease;
+    z-index: 1;
+  }
+
+  &:hover a:hover::after {
+    width: 40%;
+  }
+
+  .cell-ai {
+    background-color: $ai-bg;
+    color: $ai-fg;
+  }
+
+  .cell-paint {
+    background-color: $paint-bg;
+    color: $paint-fg;
+  }
+
+  .cell-video {
+    background-color: $video-bg;
+    color: $video-fg;
+  }
+}

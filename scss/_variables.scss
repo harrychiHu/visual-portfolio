@@ -1,0 +1,33 @@
+// Breakpoints
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+$bp-xxl: 1400px;
+
+// Fonts
+$font-main: "Inter", sans-serif;
+$font-display: "Playfair Display", serif;
+
+// Base colors
+$ink-900: #0f0f10;
+$ink-800: #111111;
+$paper-50: #f7f7f7;
+$cloud-100: #ededed;
+$night-950: #0b0b0b;
+$accent-red: #c7001f;
+
+// Sections
+$ai-bg: $ink-900;
+$ai-fg: $cloud-100;
+
+$paint-bg: $accent-red;
+$paint-fg: #ffffff;
+
+$video-bg: $paper-50;
+$video-fg: $ink-800;
+
+// Hover tokens (optional but recommended)
+$ai-bg-hover: #141416;
+$paint-bg-hover: #a80018;
+$video-bg-hover: #ffffff;

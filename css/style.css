@@ -1,0 +1,191 @@
+@charset "UTF-8";
+/* =========================
+   🔧 Global Reset（SCSS 版）
+   ========================= */
+/* 全域 reset：含 before/after */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* html、body 基本設定 */
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Noto Serif JP", "Microsoft JhengHei", sans-serif;
+  background-color: #fff;
+  color: #2f2f2f;
+  line-height: 1.5;
+}
+
+/* 讓圖片自然 RWD，不壓爆版型 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 連結預設：不要底線、跟父元素顏色一致 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ul / ol 清除預設縮排 */
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 按鈕預設 */
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+}
+
+/* 表單統一字體 */
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 標題不加粗（由你自己決定粗細） */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  line-height: 1.2;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  min-height: 100vh;
+}
+.home-grid a {
+  display: grid;
+  place-items: center;
+  font-family: "Inter", sans-serif;
+  font-size: 36px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+.home-grid a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  -webkit-transition: background 200ms ease;
+  transition: background 200ms ease;
+  z-index: 0;
+}
+.home-grid a {
+  z-index: 1;
+}
+.home-grid:hover a::before {
+  background: rgba(0, 0, 0, 0.22);
+}
+.home-grid:hover a:hover::before {
+  background: rgba(0, 0, 0, 0);
+}
+.home-grid a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 45%;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  opacity: 0.6;
+  -webkit-transition: width 220ms ease;
+  transition: width 220ms ease;
+  z-index: 1;
+}
+.home-grid:hover a:hover::after {
+  width: 40%;
+}
+.home-grid .cell-ai {
+  background-color: #0f0f10;
+  color: #ededed;
+}
+.home-grid .cell-paint {
+  background-color: #c7001f;
+  color: #ffffff;
+}
+.home-grid .cell-video {
+  background-color: #f7f7f7;
+  color: #111111;
+}
+
+.header {
+  padding: 2rem 0;
+  background-color: #0f0f10;
+  position: relative;
+}
+.header::after {
+  content: "";
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: 0;
+  height: 2px;
+  background-color: #ededed;
+  opacity: 0.8;
+}
+.header .pc-header {
+  width: 90%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2rem;
+}
+.header .pc-header .pc-nav {
+  width: 30%;
+}
+.header .pc-header .pc-nav h2 {
+  text-transform: capitalize;
+  font-size: 36px;
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  margin: 0 0 1rem 0;
+  color: #ededed;
+}
+.header .pc-header .pc-nav li {
+  margin-bottom: 0.5rem;
+}
+.header .pc-header .pc-nav li a {
+  display: block;
+  color: #ededed;
+  text-decoration: none;
+  padding: 0.25rem 0;
+  -webkit-transition: color 200ms ease, letter-spacing 200ms ease;
+  transition: color 200ms ease, letter-spacing 200ms ease;
+}
+.header .pc-header .pc-nav li a:hover {
+  color: #a80018;
+  letter-spacing: 0.02em;
+}

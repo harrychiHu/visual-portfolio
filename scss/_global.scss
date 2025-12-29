@@ -1,0 +1,74 @@
+/* =========================
+   🔧 Global Reset（SCSS 版）
+   ========================= */
+
+/* 全域 reset：含 before/after */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* html、body 基本設定 */
+html {
+  font-size: 16px; // 方便用 rem 做 RWD
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Noto Serif JP", "Microsoft JhengHei", sans-serif;
+  background-color: #fff;
+  color: #2f2f2f;
+  line-height: 1.5;
+}
+
+/* 讓圖片自然 RWD，不壓爆版型 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block; // 避免底部空隙
+}
+
+/* 連結預設：不要底線、跟父元素顏色一致 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ul / ol 清除預設縮排 */
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 按鈕預設 */
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit; // 字體繼承
+}
+
+/* 表單統一字體 */
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 標題不加粗（由你自己決定粗細） */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  line-height: 1.2;
+}

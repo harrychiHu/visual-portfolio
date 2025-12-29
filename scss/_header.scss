@@ -1,0 +1,51 @@
+.header {
+  padding: 2rem 0;
+  background-color: $ai-bg;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    bottom: 0;
+    height: 2px;
+    background-color: $ai-fg;
+    opacity: 0.8;
+  }
+
+  .pc-header {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    .pc-nav {
+      width: 30%;
+      h2 {
+        text-transform: capitalize;
+        font-size: 36px;
+        font-weight: 700;
+        font-family: $font-main;
+        margin: 0 0 1rem 0;
+        color: $ai-fg;
+      }
+      li {
+        margin-bottom: 0.5rem;
+
+        a {
+          display: block; // ✅ 整行可點
+          color: $ai-fg;
+          text-decoration: none;
+          padding: 0.25rem 0;
+
+          transition: color 200ms ease, letter-spacing 200ms ease; // ✅
+          &:hover {
+            color: $paint-bg-hover;
+            letter-spacing: 0.02em; // 小小加分，不油
+          }
+        }
+      }
+    }
+  }
+}
