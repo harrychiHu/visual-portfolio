@@ -1,0 +1,63 @@
+.year {
+  background-color: $ai-bg;
+
+  .digital-main {
+    width: 90%;
+    margin: 0 auto;
+    padding: 2rem 0;
+
+    .year__title {
+      font-size: 24px;
+      font-weight: 700;
+      font-family: $font-main;
+      color: $ai-fg;
+      margin: 0 0 1rem 0;
+      letter-spacing: 0.02em;
+    }
+
+    .masonry {
+      column-count: 3;
+      column-gap: 18px;
+    }
+
+    .masonry__item {
+      display: inline-block; // ✅ columns 必備
+      width: 100%;
+      margin: 0 0 18px;
+      break-inside: avoid; // ✅ 不要被切斷
+      text-decoration: none;
+      overflow: hidden;
+      border-radius: 12px;
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0);
+        transition: background 200ms ease;
+        z-index: 1;
+      }
+      &:hover::after {
+        background: rgba(0, 0, 0, 0.22);
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: transform 200ms ease;
+      }
+    }
+  }
+}
+
+/* RWD：螢幕變小就減欄 */
+@media (max-width: 992px) {
+  .year .digital-main .masonry {
+    column-count: 2;
+  }
+}
+@media (max-width: 576px) {
+  .year .digital-main .masonry {
+    column-count: 1;
+  }
+}

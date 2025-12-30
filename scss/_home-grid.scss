@@ -11,50 +11,51 @@
     text-decoration: none;
     position: relative;
     overflow: hidden;
-  }
-
-  // ✅ 暗化遮罩（預設透明）
-  a::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0);
-    transition: background 200ms ease;
-    z-index: 0;
-  }
-
-  // ✅ 讓文字在遮罩上面（很重要，不然文字也會被蓋暗或蓋掉）
-  a {
     z-index: 1;
+
+    // ✅ 暗化遮罩（預設透明）
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0);
+      transition: background 200ms ease;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    // 底線效果
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 45%;
+      width: 0;
+      height: 2px;
+      background-color: currentColor;
+      transform: translateX(-50%);
+      opacity: 0.6;
+      transition: width 220ms ease;
+      z-index: 1;
+    }
   }
 
   // ✅ 滑進整個 grid：全部變暗
-  &:hover a::before {
-    background: rgba(0, 0, 0, 0.22);
-  }
+  &:hover {
+    a::before {
+      background: rgba(0, 0, 0, 0.22);
+    }
 
-  // ✅ 滑到某格：那格恢復（遮罩變透明）
-  &:hover a:hover::before {
-    background: rgba(0, 0, 0, 0);
-  }
+    // ✅ 滑到某格：那格恢復 + 底線出現
+    a:hover {
+      &::before {
+        background: rgba(0, 0, 0, 0);
+      }
 
-  // 底線效果
-  a::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 45%;
-    width: 0;
-    height: 2px;
-    background-color: currentColor;
-    transform: translateX(-50%);
-    opacity: 0.6;
-    transition: width 220ms ease;
-    z-index: 1;
-  }
-
-  &:hover a:hover::after {
-    width: 40%;
+      &::after {
+        width: 40%;
+      }
+    }
   }
 
   .cell-ai {
