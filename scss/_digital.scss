@@ -49,6 +49,59 @@
     }
   }
 }
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.7);
+
+  display: grid;
+  place-items: center;
+  padding: 24px;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 180ms ease, visibility 180ms ease;
+
+  .lightbox__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+
+    border-radius: 999px;
+    border: 0;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff; // 先用白色保險
+    font-size: 24px;
+    cursor: pointer;
+
+    display: grid;
+    place-items: center;
+  }
+
+  .lightbox__inner {
+    padding: 16px;
+    max-width: 90vw;
+    max-height: 86vh;
+  }
+
+  .lightbox__img {
+    max-width: 100%;
+    max-height: 86vh;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  }
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
 
 /* RWD：螢幕變小就減欄 */
 @media (max-width: 992px) {
