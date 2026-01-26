@@ -1,5 +1,59 @@
+.year-nav {
+  width: 90%;
+  margin: 1rem auto 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  position: sticky;
+  top: 12px; // ✅ 視覺舒服（想更鬆可 16px）
+  z-index: 50;
+
+  background: transparent;
+  padding: 0;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+
+    color: $ai-fg;
+    text-decoration: none;
+    font-family: $font-main;
+    font-weight: 600;
+    font-size: 14px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+
+    transition:
+      transform 160ms ease,
+      background 160ms ease,
+      color 160ms ease;
+  }
+
+  a:hover {
+    background: rgba(255, 255, 255, 0.16);
+    transform: translateY(-1px);
+  }
+
+  a:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.35);
+    outline-offset: 2px;
+  }
+}
+
 .year {
   background-color: $ai-bg;
+  scroll-margin-top: 64px;
+
+  .year + .year {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
 
   .digital-main {
     width: 90%;

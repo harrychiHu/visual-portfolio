@@ -16,13 +16,14 @@
 html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
   width: 100%;
   min-height: 100vh;
   font-family: "Noto Serif JP", "Microsoft JhengHei", sans-serif;
-  background-color: #fff;
+  background-color: #0f0f10;
   color: #2f2f2f;
   line-height: 1.5;
 }
@@ -255,8 +256,63 @@ body.is-locked {
           flex: 0 0 30%;
 }
 
+.year-nav {
+  width: 90%;
+  margin: 1rem auto 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: sticky;
+  top: 12px;
+  z-index: 50;
+  background: transparent;
+  padding: 0;
+}
+.year-nav a {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  color: #ededed;
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-transition: background 160ms ease, color 160ms ease, -webkit-transform 160ms ease;
+  transition: background 160ms ease, color 160ms ease, -webkit-transform 160ms ease;
+  transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+  transition: transform 160ms ease, background 160ms ease, color 160ms ease, -webkit-transform 160ms ease;
+}
+.year-nav a:hover {
+  background: rgba(255, 255, 255, 0.16);
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+}
+.year-nav a:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.35);
+  outline-offset: 2px;
+}
+
 .year {
   background-color: #0f0f10;
+  scroll-margin-top: 64px;
+}
+.year .year + .year {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 .year .digital-main {
   width: 90%;
