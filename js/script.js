@@ -20,26 +20,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   lightbox.addEventListener("click", (e) => {
     if (e.target.closest(".lightbox__inner")) return;
-
     closeLightbox();
   });
 
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
     if (!lightbox.classList.contains("is-open")) return;
-
     closeLightbox();
   });
 
   closeBtn.addEventListener("click", closeLightbox);
 
-  items.forEach((a, index) => {
+  items.forEach((a) => {
     a.addEventListener("click", (e) => {
       e.preventDefault();
 
       const thumbImg = a.querySelector("img");
       if (!thumbImg) return;
-      openLightbox(thumbImg.src, thumbImg.alt);
+
+      const full = a.dataset.full || thumbImg.src;
+      openLightbox(full, thumbImg.alt);
     });
   });
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-in");
+        io.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.08 },
+  );
+
+  items.forEach((item) => io.observe(item));
 });

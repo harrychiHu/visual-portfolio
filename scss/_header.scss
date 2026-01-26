@@ -74,6 +74,19 @@
     &:hover::after {
       width: 100%;
     }
+
+    /* ✅ 目前頁面狀態 */
+    &[aria-current="page"] {
+      color: $paint-bg-hover;
+      text-underline-offset: 6px;
+      text-decoration-thickness: 2px;
+
+      /* 如果你希望 active 一進來就有底線，用這個 */
+      &::after {
+        width: 100%;
+        opacity: 1;
+      }
+    }
   }
 }
 

@@ -200,6 +200,7 @@ body.is-locked {
   position: relative;
   -webkit-transition: color 200ms ease;
   transition: color 200ms ease;
+  /* ✅ 目前頁面狀態 */
 }
 .nav-list a::after {
   content: "";
@@ -218,6 +219,16 @@ body.is-locked {
 }
 .nav-list a:hover::after {
   width: 100%;
+}
+.nav-list a[aria-current=page] {
+  color: #a80018;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+  /* 如果你希望 active 一進來就有底線，用這個 */
+}
+.nav-list a[aria-current=page]::after {
+  width: 100%;
+  opacity: 1;
 }
 
 .logo-wrap {
@@ -279,6 +290,17 @@ body.is-locked {
   overflow: hidden;
   border-radius: 12px;
   position: relative;
+  /* 進場初始狀態 */
+  opacity: 0;
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+  /* 合併所有需要動畫的屬性 */
+  -webkit-transition: opacity 450ms ease, -webkit-transform 450ms ease, -webkit-box-shadow 220ms ease;
+  transition: opacity 450ms ease, -webkit-transform 450ms ease, -webkit-box-shadow 220ms ease;
+  transition: opacity 450ms ease, transform 450ms ease, box-shadow 220ms ease;
+  transition: opacity 450ms ease, transform 450ms ease, box-shadow 220ms ease, -webkit-transform 450ms ease, -webkit-box-shadow 220ms ease;
+  /* 進場後 */
+  /* hover 效果 */
 }
 .year .digital-main .masonry__item::after {
   content: "";
@@ -288,18 +310,37 @@ body.is-locked {
   -webkit-transition: background 200ms ease;
   transition: background 200ms ease;
   z-index: 1;
-}
-.year .digital-main .masonry__item:hover::after {
-  background: rgba(0, 0, 0, 0.22);
+  pointer-events: none;
 }
 .year .digital-main .masonry__item img {
   display: block;
   width: 100%;
   height: auto;
+  position: relative;
+  z-index: 0;
   -webkit-transition: -webkit-transform 200ms ease;
   transition: -webkit-transform 200ms ease;
   transition: transform 200ms ease;
   transition: transform 200ms ease, -webkit-transform 200ms ease;
+}
+.year .digital-main .masonry__item.is-in {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.year .digital-main .masonry__item:hover {
+  -webkit-transform: translateY(-4px);
+          transform: translateY(-4px);
+  -webkit-box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+          box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+.year .digital-main .masonry__item:hover::after {
+  background: rgba(0, 0, 0, 0.22);
+}
+.year .digital-main .masonry__item:hover img {
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
+  will-change: transform;
 }
 
 .lightbox {
@@ -330,11 +371,27 @@ body.is-locked {
   cursor: pointer;
   display: grid;
   place-items: center;
+  -webkit-transition: background 160ms ease, -webkit-transform 160ms ease;
+  transition: background 160ms ease, -webkit-transform 160ms ease;
+  transition: transform 160ms ease, background 160ms ease;
+  transition: transform 160ms ease, background 160ms ease, -webkit-transform 160ms ease;
+}
+.lightbox .lightbox__close:hover {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  background: rgba(255, 255, 255, 0.25);
 }
 .lightbox .lightbox__inner {
   padding: 16px;
   max-width: 90vw;
   max-height: 86vh;
+  opacity: 0;
+  -webkit-transform: translateY(10px) scale(0.98);
+          transform: translateY(10px) scale(0.98);
+  -webkit-transition: opacity 220ms ease, -webkit-transform 220ms ease;
+  transition: opacity 220ms ease, -webkit-transform 220ms ease;
+  transition: transform 220ms ease, opacity 220ms ease;
+  transition: transform 220ms ease, opacity 220ms ease, -webkit-transform 220ms ease;
 }
 .lightbox .lightbox__img {
   max-width: 100%;
@@ -349,7 +406,24 @@ body.is-locked {
   visibility: visible;
   pointer-events: auto;
 }
+.lightbox.is-open .lightbox__inner {
+  opacity: 1;
+  -webkit-transform: translateY(0) scale(1);
+          transform: translateY(0) scale(1);
+}
 
+/* 尊重降低動態偏好：放最外層 */
+@media (prefers-reduced-motion: reduce) {
+  .masonry__item,
+  .masonry__item::after,
+  .masonry__item img,
+  .lightbox,
+  .lightbox__inner,
+  .lightbox__close {
+    -webkit-transition: none !important;
+    transition: none !important;
+  }
+}
 /* RWD：螢幕變小就減欄 */
 @media (max-width: 992px) {
   .year .digital-main .masonry {
