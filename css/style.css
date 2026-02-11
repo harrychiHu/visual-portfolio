@@ -506,3 +506,45 @@ body.is-locked {
           box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
   background: #000;
 }
+
+.contact__main {
+  color: #ededed;
+  min-height: calc(100vh - 180px);
+  display: -ms-grid;
+  display: grid;
+  -ms-flex-line-pack: start;
+      align-content: start;
+  gap: 1rem;
+}
+
+.contact__title {
+  margin-bottom: 0.25rem;
+}
+
+.contact__description {
+  margin: 0;
+  max-width: 64ch;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(237, 237, 237, 0.9);
+}
+
+.contact__list {
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+.contact__list a {
+  color: #ededed;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  -webkit-transition: opacity 160ms ease;
+  transition: opacity 160ms ease;
+}
+.contact__list a:hover {
+  opacity: 0.8;
+}

@@ -1,0 +1,40 @@
+.contact__main {
+  color: $ai-fg;
+  min-height: calc(100vh - 180px);
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+
+.contact__title {
+  margin-bottom: 0.25rem;
+}
+
+.contact__description {
+  margin: 0;
+  max-width: 64ch;
+  font-family: $font-main;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(237, 237, 237, 0.9);
+}
+
+.contact__list {
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: $font-main;
+  font-size: 1rem;
+  line-height: 1.8;
+
+  a {
+    color: $ai-fg;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: opacity 160ms ease;
+  }
+
+  a:hover {
+    opacity: 0.8;
+  }
+}
