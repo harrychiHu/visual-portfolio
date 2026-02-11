@@ -1,0 +1,10 @@
+.video-lightbox__frame {
+  display: block;
+  width: min(90vw, 1200px);
+  aspect-ratio: 16 / 9;
+  max-height: 86vh;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  background: #000;
+}
